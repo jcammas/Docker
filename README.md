@@ -36,3 +36,16 @@
     docker exec Abathur bash -c "export FLASK_APP=/root/app.py && python -m flask run -h 0.0.0.0 -p 3000"
 20. docker swarm init --advertise-addr $(docker-machine ip Char)
 21. docker-machine create --driver virtualbox Aiur
+22. docker-machine ssh Aiur "docker swarm join --token $(docker swarm join-token worker -q) $(docker-machine ip Char):2377"
+23. docker network create -d overlay overmind
+24. docker service create --name orbital-command -e RABBITMQ_DEFAULT_USER=docker -e RABBITMQ_DEFAULT_PASS=dockerpass --network overmind rabbitmq
+25. docker service ls
+26. docker service create --name engineering-bay --replicas 2 -e OC_USERNAME=Docker -e OC_PASSWD=dockerpass --network overmind 42school/engineering-bay
+27. docker service logs -f engineering-bay
+28. docker service create --name marines --replicas 2 -e OC_USERNAME=Docker -e OC_PASSWD=dockerpass --network overmind 42school/marine-squad
+29. docker service ps marines
+30. docker service update --replicas 20 marines
+31. docker service rm $(docker service ls -q)
+32. docker rm -f $(docker ps -aq)
+33. docker rmi $(docker images -qa)
+34. docker-machine rm Aiur -y
