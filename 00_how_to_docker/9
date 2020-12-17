@@ -1,0 +1,6 @@
+#to start debian
+docker run -it --rm debian /bin/bash
+#to configure
+apt-get update
+apt-get upgrade
+apt-get install vim gcc git
