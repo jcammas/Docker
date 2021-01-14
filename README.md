@@ -102,18 +102,18 @@ ex01
 
 ex02
 
-## Add any app compatible with ruby 2.5.1 and bundler 1.17.3, in my case I use a simple blog at https://github.com/acuD1/rails-docker-1-app.git
+ Add any app compatible with ruby 2.5.1 and bundler 1.17.3, in my case I use a simple blog at https://github.com/acuD1/rails-docker-1-app.git
 
-# $ git clone https://github.com/acuD1/rails-docker-1-app.git app
+ $ git clone https://github.com/acuD1/rails-docker-1-app.git app
 
-# $ docker build -t ft-rails:on-build .
+ $ docker build -t ft-rails:on-build .
 
-## Create the Dockerfile from the subject
+ Create the Dockerfile from the subject
 
-# $ echo -e 'FROM ft-rails:on-build\nEXPOSE 3000\nCMD ["rails", "s", "-b", "0.0.0.0", "-p" ,"3000"]' > Dockerfile_Subject
+ $ echo -e 'FROM ft-rails:on-build\nEXPOSE 3000\nCMD ["rails", "s", "-b", "0.0.0.0", "-p" ,"3000"]' > Dockerfile_Subject
 
-## Then run subject build:
+ Then run subject build:
 
-# $ docker build -t ex02 -f Dockerfile_Subject .
+ $ docker build -t ex02 -f Dockerfile_Subject .
 
-# $ docker run -it -p 3000:3000 --rm ex02
+ $ docker run -it -p 3000:3000 --rm ex02
